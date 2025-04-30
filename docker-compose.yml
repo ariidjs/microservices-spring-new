@@ -15,12 +15,12 @@ services:
     image: mysql:8.3.0
     container_name: mysql-db
     environment:
-      MYSQL_ROOT_PASSWORD: mysql
+      MYSQL_ROOT_PASSWORD: Makerot00
     ports:
       - "3306:3306"
     volumes:
       - ./docker/mysql/data:/var/lib/mysql
-      - ./mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./docker/mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
 
   zookeeper:
     image: confluentinc/cp-zookeeper:7.5.0
@@ -54,7 +54,7 @@ services:
     depends_on:
       - broker
     ports:
-      - "8085:8081"
+      - "8087:8081"
     environment:
       SCHEMA_REGISTRY_HOST_NAME: schema-registry
       SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS: 'broker:29092'
