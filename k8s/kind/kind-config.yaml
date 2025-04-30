@@ -6,6 +6,8 @@ nodes:
     extraPortMappings:
       - containerPort: 30080
         hostPort: 80
+      - containerPort: 300443
+        hostPort: 443
         # optional: set the bind address on the host
         # 0.0.0.0 is the current default
 #        listenAddress: "127.0.0.1"
