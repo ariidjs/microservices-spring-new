@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: notification-service
-          image: saiupadhyayula007/new-notification-service:latest
+          image: ariidjs/new-notification-service:latest
           env:
             - name: SPRING_KAFKA_BOOTSTRAP-SERVERS
               valueFrom:

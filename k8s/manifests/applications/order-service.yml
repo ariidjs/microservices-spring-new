@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: order-service
-          image: saiupadhyayula007/new-order-service:latest
+          image: ariidjs/new-order-service:latest
           env:
             - name: SPRING_KAFKA_BOOTSTRAP-SERVERS
               valueFrom:

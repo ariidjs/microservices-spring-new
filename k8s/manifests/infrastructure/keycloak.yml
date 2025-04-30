@@ -16,7 +16,7 @@ spec:
         - name: keycloak
           image: quay.io/keycloak/keycloak:24.0.1
           ports:
-            - containerPort: 8080
+            - containerPort: 8181
           args: ["start-dev", "--import-realm"]
           env:
             - name: DB_VENDOR
@@ -71,8 +71,8 @@ spec:
     app: keycloak
   ports:
     - protocol: TCP
-      port: 8080
-      targetPort: 8080
+      port: 8181
+      targetPort: 8181
 ---
 apiVersion: v1
 data:
