@@ -67,11 +67,12 @@ kind: Service
 metadata:
   name: keycloak
 spec:
+  type: LoadBalancer
   selector:
     app: keycloak
   ports:
     - protocol: TCP
-      port: 8181
+      port: 80
       targetPort: 8181
 ---
 apiVersion: v1

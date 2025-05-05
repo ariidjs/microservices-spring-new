@@ -16,7 +16,7 @@ spec:
         - name: keycloak-mysql
           image: mysql:8
           ports:
-            - containerPort: 3306
+            - containerPort: 3307
           env:
             - name: MYSQL_ROOT_PASSWORD
               valueFrom:
@@ -55,8 +55,8 @@ spec:
     app: keycloak-mysql
   ports:
     - protocol: TCP
-      port: 3306
-      targetPort: 3306
+      port: 3307
+      targetPort: 3307
 ---
 apiVersion: v1
 kind: PersistentVolume
