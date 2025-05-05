@@ -54,11 +54,12 @@ kind: Service
 metadata:
   name: api-gateway
 spec:
+  type: LoadBalancer
   selector:
     app: api-gateway
   ports:
     - protocol: TCP
-      port: 9000
+      port: 80
       targetPort: 9000
 ---
 apiVersion: v1
