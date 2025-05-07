@@ -65,19 +65,20 @@ metadata:
   name: mysql-pv
 spec:
   storageClassName: 'standard'
-  accessModes: [ReadWriteOnce]
+  accessModes:
+    - ReadWriteOnce
   capacity:
     storage: 1Gi
   hostPath:
-    path: /data/mysql
+    path: /data/mysql-base
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: mysql-pvc
 spec:
-  storageClassName: 'standard'
-  accessModes: [ReadWriteOnce]
+  accessModes:
+    - ReadWriteOnce
   resources:
     requests:
       storage: 1Gi

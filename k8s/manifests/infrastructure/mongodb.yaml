@@ -55,7 +55,7 @@ spec:
 ---
 apiVersion: v1
 data:
-  MONGO_INITDB_ROOT_PASSWORD: cm9vdA==
+  MONGO_INITDB_ROOT_PASSWORD: cGFzc3dvcmQ=
 kind: Secret
 metadata:
   name: mongodb-secrets

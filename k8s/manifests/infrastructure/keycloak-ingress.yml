@@ -1,0 +1,29 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: keycloak-ingress
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: keycloak-ip
+    networking.gke.io/managed-certificates: keycloak-cert
+    kubernetes.io/ingress.class: "gce"
+spec:
+  rules:
+    - host: auth.service.ariidjs.dev
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: keycloak
+                port:
+                  number: 80
+
+---
+apiVersion: networking.gke.io/v1
+kind: ManagedCertificate
+metadata:
+  name: keycloak-cert
+spec:
+  domains:
+    - auth.service.ariidjs.dev

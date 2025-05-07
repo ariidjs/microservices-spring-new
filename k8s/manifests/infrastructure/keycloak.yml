@@ -14,10 +14,14 @@ spec:
     spec:
       containers:
         - name: keycloak
-          image: quay.io/keycloak/keycloak:24.0.1
+          image: quay.io/keycloak/keycloak:latest
           ports:
-            - containerPort: 8181
-          args: ["start-dev", "--import-realm"]
+            - containerPort: 8282
+          args:
+            - "start-dev"
+            - "--http-port=8282"
+            - "--hostname-strict=false"
+            - "--import-realm"
           env:
             - name: DB_VENDOR
               valueFrom:
@@ -54,6 +58,12 @@ spec:
                 secretKeyRef:
                   key: KEYCLOAK_ADMIN_PASSWORD
                   name: keycloak-secrets
+#            - name: KC_HOSTNAME
+#              value: "auth.service.ariidjs.dev"
+            - name: KC_PROXY_HEADERS
+              value: "xforwarded"
+            - name: KC_HTTP_ENABLED
+              value: "true"
           volumeMounts:
             - name: keycloak-realm
               mountPath: /opt/keycloak/data/import
@@ -71,9 +81,10 @@ spec:
   selector:
     app: keycloak
   ports:
-    - protocol: TCP
+    - name: http
+      protocol: TCP
       port: 80
-      targetPort: 8181
+      targetPort: 8282
 ---
 apiVersion: v1
 data:
