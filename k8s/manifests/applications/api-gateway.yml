@@ -67,4 +67,4 @@ kind: ConfigMap
 metadata:
   name: api-gateway-config
 data:
-  SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUER-URI: "http://34.92.0.11/realms/spring-microservices-security-realm"
+  SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUER-URI: "https://auth.service.ariidjs.dev/realms/spring-microservices-security-realm"

@@ -3,10 +3,11 @@ kind: Ingress
 metadata:
   name: keycloak-ingress
   annotations:
-    kubernetes.io/ingress.global-static-ip-name: keycloak-ip
-    networking.gke.io/managed-certificates: keycloak-cert
+    kubernetes.io/ingress.global-static-ip-name: "keycloak-ip"
+    networking.gke.io/managed-certificates: "keycloak-cert"
     kubernetes.io/ingress.class: "gce"
 spec:
+  ingressClassName: "gce"
   rules:
     - host: auth.service.ariidjs.dev
       http:
@@ -27,3 +28,13 @@ metadata:
 spec:
   domains:
     - auth.service.ariidjs.dev
+
+---
+apiVersion: cloud.google.com/v1
+kind: BackendConfig
+metadata:
+  name: keycloak-backendconfig
+spec:
+  healthCheck:
+    requestPath: /realms/master
+    port: 8080
